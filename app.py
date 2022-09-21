@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import io
 import numpy as np
+from csv import writer
+import datetime
 
 buffer = io.BytesIO()
 buffer2 = io.BytesIO()
@@ -23,6 +25,27 @@ if uploaded_file:
 	info['kdsatker'] = info['kdsatker'].str[-6:]
 	nama_satker = info['nmsatker'].iloc[0]  +' (' + info['kdsatker'].iloc[0] + ')'
 	kode_satker = info['kdsatker'].iloc[0]
+	
+	# ct stores current time
+	ct = datetime.datetime.now()
+
+	# Log RPD Terakhir 
+	List=[ct,kode_satker,nama_satker]
+
+	# Open our existing CSV file in append mode
+	# Create a file object for this file
+	with open('logrpdterakhir.csv', 'a') as f_object:
+
+	    # Pass this file object to csv.writer()
+	    # and get a writer object
+	    writer_object = writer(f_object)
+
+	    # Pass the list as an argument into
+	    # the writerow()
+	    writer_object.writerow(List)
+
+	    #Close the file object
+	    f_object.close()	
 
 	# Master Data
 
@@ -462,6 +485,27 @@ if uploaded_file:
 		## Ketikan Realisasi
 		rpdreal = satker[['ID','Satker','Kode','Uraian','Belanja','Keterangan','Pagu','Sisa RPD',]]
 		rpdreal1 = pd.merge(rpdreal,real4,on='ID',how='left')
+
+		# ct stores current time
+		ct = datetime.datetime.now()
+
+		# Log RPD Terakhir 
+		List=[ct,kode_satker,nama_satker]
+
+		# Open our existing CSV file in append mode
+		# Create a file object for this file
+		with open('logrpdrealisasi.csv', 'a') as f_object:
+
+		    # Pass this file object to csv.writer()
+		    # and get a writer object
+		    writer_object = writer(f_object)
+
+		    # Pass the list as an argument into
+		    # the writerow()
+		    writer_object.writerow(List)
+
+		    #Close the file object
+		    f_object.close()	
 
 		
 		# Create a Pandas Excel writer using XlsxWriter as the engine.

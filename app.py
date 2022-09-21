@@ -34,7 +34,7 @@ if uploaded_file:
 
 	# Open our existing CSV file in append mode
 	# Create a file object for this file
-	with open('rpdbabel.github.io/logrpdterakhir.csv', 'a') as f_object:
+	with open('logrpdterakhir.csv', 'a') as f_object:
 
 	    # Pass this file object to csv.writer()
 	    # and get a writer object

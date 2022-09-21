@@ -485,6 +485,9 @@ if uploaded_file:
 		## Ketikan Realisasi
 		rpdreal = satker[['ID','Satker','Kode','Uraian','Belanja','Keterangan','Pagu','Sisa RPD',]]
 		rpdreal1 = pd.merge(rpdreal,real4,on='ID',how='left')
+<<<<<<< HEAD
+	
+=======
 
 		# ct stores current time
 		ct = datetime.datetime.now()
@@ -508,6 +511,7 @@ if uploaded_file:
 		    f_object.close()	
 
 		
+>>>>>>> 8a18d723b7fa2a9de29a58739ce31e28b742b88a
 		# Create a Pandas Excel writer using XlsxWriter as the engine.
 		excelname = '/content/'+'[DJPb Babel] RPD Realisasi Satker ' + kode_satker + '.xlsx'
 		writer = pd.ExcelWriter(buffer2, engine='xlsxwriter')

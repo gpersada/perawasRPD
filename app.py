@@ -485,33 +485,7 @@ if uploaded_file:
 		## Ketikan Realisasi
 		rpdreal = satker[['ID','Satker','Kode','Uraian','Belanja','Keterangan','Pagu','Sisa RPD',]]
 		rpdreal1 = pd.merge(rpdreal,real4,on='ID',how='left')
-<<<<<<< HEAD
-	
-=======
 
-		# ct stores current time
-		ct = datetime.datetime.now()
-
-		# Log RPD Terakhir 
-		List=[ct,kode_satker,nama_satker]
-
-		# Open our existing CSV file in append mode
-		# Create a file object for this file
-		with open('logrpdrealisasi.csv', 'a') as f_object:
-
-		    # Pass this file object to csv.writer()
-		    # and get a writer object
-		    writer_object = writer(f_object)
-
-		    # Pass the list as an argument into
-		    # the writerow()
-		    writer_object.writerow(List)
-
-		    #Close the file object
-		    f_object.close()	
-
-		
->>>>>>> 8a18d723b7fa2a9de29a58739ce31e28b742b88a
 		# Create a Pandas Excel writer using XlsxWriter as the engine.
 		excelname = '/content/'+'[DJPb Babel] RPD Realisasi Satker ' + kode_satker + '.xlsx'
 		writer = pd.ExcelWriter(buffer2, engine='xlsxwriter')

@@ -23,7 +23,7 @@ st.write("Follow [Instagram](https://www.instagram.com/djpbbabel/) dan [Youtube]
 st.write("Panduan aplikasi [klik di sini](https://drive.google.com/drive/folders/1QiATR0jJ2P4jRWGKG54gXUeqQXtM_qcA?usp=sharing).")
 st.markdown('---')
 
-tab1, tab2, tab3 = st.tabs(["Revisi Pemutakhiran KPA", "Revisi Halaman III DIPA","Kalkulator Target Penyerapan"])
+tab1, tab2 = st.tabs(["Revisi Pemutakhiran KPA", "Revisi Halaman III DIPA"])
 
 with tab1:
 	st.header("Unduh RPD DIPA Terakhir untuk membantu Revisi Pemutakhiran KPA")
@@ -2018,35 +2018,6 @@ with tab2:
 			file_name=excelname,
 			mime="application/vnd.ms-excel"
 		)
-
-with tab3:
-	st.header("Kalkulator Target Penyerapan Anggaran")
-	# input pagu
-	pagu51 = st.number_input(label="Masukan nominal pagu belanja pegawai. Jika tidak ada isi 0.")
-	pagu52 = st.number_input(label="Masukan nominal pagu belanja barang. Jika tidak ada isi 0.")
-	pagu53 = st.number_input(label="Masukan nominal pagu belanja modal. Jika tidak ada isi 0.")
-	pagu54 = st.number_input(label="Masukan nominal pagu belanja bantuan sosial. Jika tidak ada isi 0.")
-
-	# input blokir
-	blokir51 = st.number_input(label="Masukan nominal blokir belanja pegawai. Jika tidak ada isi 0.")
-	blokir52 = st.number_input(label="Masukan nominal blokir belanja barang. Jika tidak ada isi 0.")
-	blokir53 = st.number_input(label="Masukan nominal blokir belanja modal. Jika tidak ada isi 0.")
-	blokir54 = st.number_input(label="Masukan nominal blokir belanja bantuan sosial. Jika tidak ada isi 0.")
-
-	target1 = 0
-	target2 = 0
-	target3 = 0
-	target4 = 0
-
-	def calculate():
-		target1 = (pagu51 - blokir51) * 0,20 + (pagu52 - blokir52) * 0,15 + (pagu53 - blokir53) * 0,10 + (pagu57 - blokir57) * 0,25
-		target2 = (pagu51 - blokir51) * 0,50 + (pagu52 - blokir52) * 0,50 + (pagu53 - blokir53) * 0,40 + (pagu57 - blokir57) * 0,50
-		target3 = (pagu51 - blokir51) * 0,75 + (pagu52 - blokir52) * 0,70 + (pagu53 - blokir53) * 0,70 + (pagu57 - blokir57) * 0,75
-		target4 = (pagu51 - blokir51) * 0,95 + (pagu52 - blokir52) * 0,90 + (pagu53 - blokir53) * 0,90 + (pagu57 - blokir57) * 0,95
-		st.success(f"Target Triwulan I = {target1}. Target Triwulan II = {target2}. Target Triwulan III = {target3}. Target Triwulan IV = {target4}.")
-
-	if st.button("Hitung Target Triwulan"):
-	    calculate()
 
 st.markdown('---')
 st.caption('Created by Farhan Ariq R. - Bidang PPA I, Kanwil DJPb Bangka Belitung 2022')

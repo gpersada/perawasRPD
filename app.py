@@ -2043,8 +2043,7 @@ with tab3:
 		target2 = (pagu51 - blokir51) * 0,50 + (pagu52 - blokir52) * 0,50 + (pagu53 - blokir53) * 0,40 + (pagu57 - blokir57) * 0,50
 		target3 = (pagu51 - blokir51) * 0,75 + (pagu52 - blokir52) * 0,70 + (pagu53 - blokir53) * 0,70 + (pagu57 - blokir57) * 0,75
 		target4 = (pagu51 - blokir51) * 0,95 + (pagu52 - blokir52) * 0,90 + (pagu53 - blokir53) * 0,90 + (pagu57 - blokir57) * 0,95
-
-	    st.success(f"Target Triwulan I = {target1}. Target Triwulan II = {target2}. Target Triwulan III = {target3}. Target Triwulan IV = {target4}.")
+		st.success(f"Target Triwulan I = {target1}. Target Triwulan II = {target2}. Target Triwulan III = {target3}. Target Triwulan IV = {target4}.")
 
 	if st.button("Hitung Target Triwulan"):
 	    calculate()

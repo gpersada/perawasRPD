@@ -17,10 +17,10 @@ buffer2 = io.BytesIO()
 # Halaman Streamlit
 st.set_page_config(page_title='[DJPb Babel] Perawas RPD')
 st.title('Inovasi Perawas RPD 📋')
-st.subheader('Kanwil Ditjen Perbendaharaan Provinsi Bangka Belitung')
+st.subheader('Dari DJPb Babel untuk Indonesia ❤️')
 st.write("Aplikasi Perencanaan dan Pengawasan RPD (Perawas RPD) berfungsi membantu proses penyusunan RPD Satker Anda.")
-st.write("Follow [Instagram](https://www.instagram.com/djpbbabel/) dan [Youtube](https://www.youtube.com/channel/UCM70tgByAEPpIPqME2mKKyQ).")
-st.write("Panduan aplikasi [klik di sini](https://drive.google.com/drive/folders/1QiATR0jJ2P4jRWGKG54gXUeqQXtM_qcA?usp=sharing).")
+st.write("Follow [Instagram](https://www.instagram.com/djpbbabel/) dan [Youtube](https://www.youtube.com/channel/UCM70tgByAEPpIPqME2mKKyQ) DJPb Babel.")
+st.write("Panduan aplikasi [bit.ly/materidjpbbabel](https://bit.ly/materidjpbbabel).")
 st.markdown('---')
 
 tab1, tab2 = st.tabs(["Revisi Pemutakhiran KPA", "Revisi Halaman III DIPA"])

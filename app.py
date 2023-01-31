@@ -23,9 +23,9 @@ st.write("Follow [Instagram](https://www.instagram.com/djpbbabel/) dan [Youtube]
 st.write("Panduan aplikasi [klik di sini](https://drive.google.com/drive/folders/1QiATR0jJ2P4jRWGKG54gXUeqQXtM_qcA?usp=sharing).")
 st.markdown('---')
 
-tab1, tab2 = st.tabs(["Revisi Pemutakhiran KPA", "Revisi Halaman III DIPA"])
+tab1, tab2 = st.tabs(["Revisi Halaman III DIPA","Revisi Pemutakhiran KPA"])
 
-with tab1:
+with tab2:
 	st.header("Unduh RPD DIPA Terakhir untuk membantu Revisi Pemutakhiran KPA")
 	# Upload File RPD DIPA Usulan
 	uploaded_file = st.file_uploader('Upload File RPD DIPA Usulan di sini.', type='xlsx')
@@ -1054,7 +1054,7 @@ with tab1:
 			mime="application/vnd.ms-excel"
 		)
 
-with tab2:
+with tab1:
 	st.header("Unduh RPD Realisasi untuk membantu Revisi Halaman III DIPA")
 	# Upload File RPD DIPA Usulan dan Mon SAKTI
 	uploaded_fileZ = st.file_uploader('Upload File RPD DIPA Usulan di sini..', type='xlsx')

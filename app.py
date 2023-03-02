@@ -368,13 +368,13 @@ with tab1:
 		# Data Pagu dari DIPA Usulan
 		usulan = pd.read_excel(uploaded_file, index_col=None, header=6, skipfooter=5, engine='openpyxl')
 	
-		dfs = usulan.iloc[:,[1, 2, 17, 18, 19, 20, 21, 22, 24, 26, 27, 28, 29, 31]]
+		dfs = usulan.iloc[:,[1, 2, 11]]
 
 		dfs2=dfs.dropna()
-		dfs2.columns = ['Kode', 'Uraian', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+		dfs2.columns = ['Kode', 'Uraian', 'pagu']
 
 		dfs2=dfs2.loc[dfs2['Uraian'].str.len() > 1]
-		dfs2[['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]=dfs2[['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]*1000
+		dfs2[['pagu']]=dfs2[['pagu']]*1000
 		dfs3=dfs2[['Kode']]
 		
 		# Pemisahan Kode antar level RKA KL
@@ -401,7 +401,7 @@ with tab1:
 		idskompZ.columns = ['kdskomp']
 
 		idakunZ=idakunZ.drop(['Uraian'], axis=1)
-		idakunZ.columns = ['kdakun','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+		idakunZ.columns = ['kdakun','pagu']
 
 		# Penyesuaian Kode Program, KRO, dan RO
 
@@ -429,9 +429,9 @@ with tab1:
 		sumkompZ['ID']=sumkompZ['ID']+"."+sumkompZ['kdakun'].str[:2]
 		sumkompZ=sumkompZ.drop(['kdakun'], axis=1)
 
-		sumkompZ = sumkompZ.groupby(['ID']).sum()[['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]
+		sumkompZ = sumkompZ.groupby(['ID']).sum()[['pagu']]
 		sumkompZ.reset_index(inplace=True)
-		sumkompZ['Pagu']= sumkompZ[['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']].sum(axis=1)
+		sumkompZ['Pagu']= sumkompZ[['pagu']].sum(axis=1)
 		sumkompZ=sumkompZ[['ID','Pagu']]
 
 		satkerZ=satker.drop(['Pagu'], axis=1)
@@ -458,9 +458,9 @@ with tab1:
 		sumskompZ['ID']=sumskompZ['ID']+"."+sumskompZ['kdakun'].str[:2]
 		sumskompZ=sumskompZ.drop(['kdakun'], axis=1)
 
-		sumskompZ = sumskompZ.groupby(['ID']).sum()[['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]
+		sumskompZ = sumskompZ.groupby(['ID']).sum()[['pagu']]
 		sumskompZ.reset_index(inplace=True)
-		sumskompZ['Pagu']= sumskompZ[['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']].sum(axis=1)
+		sumskompZ['Pagu']= sumskompZ[['pagu']].sum(axis=1)
 		sumskompZ=sumskompZ[['ID','Pagu']]
 
 		satker2Z=satker2.drop(['Pagu'], axis=1)
@@ -488,9 +488,9 @@ with tab1:
 		sumakunZ['ID']=sumakunZ['ID']+"."+sumakunZ['kdakun'].str[:2]
 		sumakunZ=sumakunZ.drop(['kdakun'], axis=1)
 
-		sumakunZ = sumakunZ.groupby(['ID']).sum()[['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]
+		sumakunZ = sumakunZ.groupby(['ID']).sum()[['pagu']]
 		sumakunZ.reset_index(inplace=True)
-		sumakunZ['Pagu']= sumakunZ[['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']].sum(axis=1)
+		sumakunZ['Pagu']= sumakunZ[['pagu']].sum(axis=1)
 		sumakunZ=sumakunZ[['ID','Pagu']]
 
 		satker3Z=satker3.drop(['Pagu'], axis=1)

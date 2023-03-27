@@ -23,7 +23,7 @@ st.write("Follow [Instagram](https://www.instagram.com/djpbbabel/) dan [Youtube]
 st.write("Panduan aplikasi [klik di sini](https://drive.google.com/drive/folders/1QiATR0jJ2P4jRWGKG54gXUeqQXtM_qcA?usp=sharing).")
 st.markdown('---')
 
-tab1, tab2 = st.tabs(["Revisi Pemutakhiran KPA","Revisi Halaman III DIPA"])
+tab2, tab1 = st.tabs(["Revisi Halaman III DIPA", "Revisi Pemutakhiran KPA"])
 
 with tab1:
 	st.header("Unduh RPD DIPA Terakhir untuk membantu Revisi Pemutakhiran KPA")

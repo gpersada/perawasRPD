@@ -20,7 +20,7 @@ st.title('Inovasi Perawas RPD 📋')
 st.subheader('Dari Kanwil DJPb Babel untuk Indonesia ❤️')
 st.write("Aplikasi Perencanaan dan Pengawasan RPD (Perawas RPD) berfungsi membantu proses penyusunan RPD Satker Anda.")
 st.write("Follow [Instagram](https://www.instagram.com/djpbbabel/) dan [Youtube](https://www.youtube.com/channel/UCM70tgByAEPpIPqME2mKKyQ).")
-st.write("Panduan aplikasi [klik di sini](https://drive.google.com/drive/folders/1QiATR0jJ2P4jRWGKG54gXUeqQXtM_qcA?usp=sharing).")
+st.write("Panduan aplikasi [klik di sini](http://bit.ly/materidjpbbabel).")
 st.markdown('---')
 
 tab2, tab1 = st.tabs(["Revisi Halaman III DIPA", "Revisi Pemutakhiran KPA"])

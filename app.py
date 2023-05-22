@@ -1042,7 +1042,7 @@ with tab1:
 			'keywords': 'Perencanaan, Kas, Keuangan',
 			'comments': 'Inovasi dari Kanwil Ditjen Perbendaharaan Provinsi Bangka Belitung'})
 
-		writer.save()
+		writer.close()
 
 		excelname = '[DJPb Babel] RPD Terakhir Satker ' + kode_satker + '.xlsx'
 		
@@ -2007,7 +2007,7 @@ with tab2:
 			'keywords': 'Perencanaan, Kas, Keuangan',
 			'comments': 'Inovasi dari Kanwil Ditjen Perbendaharaan Provinsi Bangka Belitung'})
 
-		writer.save()
+		writer.close()
 
 		excelname = '[DJPb Babel] RPD Realisasi Satker ' + kode_satker + '.xlsx'
 		

@@ -93,7 +93,7 @@ with tab1:
 
 		# Proses Bentuk Uraian RO & KRO
 
-		urpisah = pd.concat([kdprog,idkro], axis=1)
+		urpisah = pd.concat([kdprog,idkro], axis=1, sort=False).sort_index()
 		urpisah.loc[:,'kdprog'] = urpisah.loc[:,'kdprog'].ffill()
 		urpisah=urpisah.dropna()
 		urpisah['ID']=urpisah['kdprog']+'.'+urpisah['kdkro']+'.000.000.00'
@@ -102,7 +102,7 @@ with tab1:
 		urpisah = urpisah[['ID', 'Kode','Uraian']]
 		urpisah.reset_index(drop=True, inplace=True)
 
-		urkro = pd.concat([kdprog,idkro], axis=1)
+		urkro = pd.concat([kdprog,idkro], axis=1, sort=False).sort_index()
 		urkro.loc[:,'kdprog'] = urkro.loc[:,'kdprog'].ffill()
 		urkro=urkro.dropna()
 		urkro['ID']=urkro['kdprog']+'.'+urkro['kdkro']+'.000.000.00'
@@ -110,7 +110,7 @@ with tab1:
 		urkro = urkro[['ID', 'Kode','Uraian']]
 		urkro.reset_index(drop=True, inplace=True)
 
-		urro = pd.concat([kdprog,kdgiat,idro], axis=1)
+		urro = pd.concat([kdprog,kdgiat,idro], axis=1, sort=False).sort_index()
 		urro.loc[:,'kdprog'] = urro.loc[:,'kdprog'].ffill()
 		urro.loc[:,'kdgiat'] = urro.loc[:,'kdgiat'].ffill()
 		urro=urro.dropna()
@@ -119,7 +119,7 @@ with tab1:
 		urro = urro[['ID', 'Kode','Uraian']]
 		urro.reset_index(drop=True, inplace=True)
 
-		urkomp = pd.concat([kdprog,kdgiat,kdkro,kdro,idkomp], axis=1)
+		urkomp = pd.concat([kdprog,kdgiat,kdkro,kdro,idkomp], axis=1, sort=False).sort_index()
 		urkomp.loc[:,'kdprog'] = urkomp.loc[:,'kdprog'].ffill()
 		urkomp.loc[:,'kdgiat'] = urkomp.loc[:,'kdgiat'].ffill()
 		urkomp.loc[:,'kdkro'] = urkomp.loc[:,'kdkro'].ffill()
@@ -130,7 +130,7 @@ with tab1:
 		urkomp = urkomp[['ID', 'Kode','Uraian']]
 		urkomp.reset_index(drop=True, inplace=True)
 
-		urskomp = pd.concat([kdprog,kdgiat,kdkro,kdro,kdkomp,idskomp], axis=1)
+		urskomp = pd.concat([kdprog,kdgiat,kdkro,kdro,kdkomp,idskomp], axis=1, sort=False).sort_index()
 		urskomp.loc[:,'kdprog'] = urskomp.loc[:,'kdprog'].ffill()
 		urskomp.loc[:,'kdgiat'] = urskomp.loc[:,'kdgiat'].ffill()
 		urskomp.loc[:,'kdkro'] = urskomp.loc[:,'kdkro'].ffill()
@@ -144,7 +144,7 @@ with tab1:
 
 		# Proses Bentuk Nilai Komponen & Jenis Belanja
 
-		kompbel1 = pd.concat([idkomp,idjenbel], axis=1)
+		kompbel1 = pd.concat([idkomp,idjenbel], axis=1, sort=False).sort_index()
 
 		kompbel1.loc[:,'kdkomp'] = kompbel1.loc[:,'kdkomp'].ffill()
 		kompbel1.loc[:,'Uraian'] = kompbel1.loc[:,'Uraian'].ffill()
@@ -153,25 +153,25 @@ with tab1:
 		kompbel2 = kompbel1[['ID', 'Uraian', 'Kode']]
 		kompbel2.rename(columns = {'Kode':'Belanja'}, inplace = True)
 
-		kompbel3 = pd.concat([kompbel2,kdro], axis=1)
+		kompbel3 = pd.concat([kompbel2,kdro], axis=1, sort=False).sort_index()
 		kompbel3.loc[:,'kdro'] = kompbel3.loc[:,'kdro'].ffill()
 		kompbel3=kompbel3.dropna()
 		kompbel3['ID']=kompbel3['kdro']+'.'+kompbel3['ID']
 		kompbel4 = kompbel3[['ID', 'Uraian', 'Belanja']]
 
-		kompbel5 = pd.concat([kompbel4,kdkro], axis=1)
+		kompbel5 = pd.concat([kompbel4,kdkro], axis=1, sort=False).sort_index()
 		kompbel5.loc[:,'kdkro'] = kompbel5.loc[:,'kdkro'].ffill()
 		kompbel5=kompbel5.dropna()
 		kompbel5['ID']=kompbel5['kdkro']+'.'+kompbel5['ID']
 		kompbel6 = kompbel5[['ID', 'Uraian', 'Belanja']]
 
-		kompbel7 = pd.concat([kompbel6,kdgiat], axis=1)
+		kompbel7 = pd.concat([kompbel6,kdgiat], axis=1, sort=False).sort_index()
 		kompbel7.loc[:,'kdgiat'] = kompbel7.loc[:,'kdgiat'].ffill()
 		kompbel7=kompbel7.dropna()
 		kompbel7['ID']=kompbel7['kdgiat']+'.'+kompbel7['ID']
 		kompbel8 = kompbel7[['ID', 'Uraian', 'Belanja']]
 
-		kompbel9 = pd.concat([kompbel8,kdprog], axis=1)
+		kompbel9 = pd.concat([kompbel8,kdprog], axis=1, sort=False).sort_index()
 		kompbel9.loc[:,'kdprog'] = kompbel9.loc[:,'kdprog'].ffill()
 		kompbel9=kompbel9.dropna()
 		kompbel9['ID']=kompbel9['kdprog']+'.'+kompbel9['ID']
@@ -179,7 +179,7 @@ with tab1:
 
 		# Proses Bentuk Nilai Subkomponen & Jenis Belanja
 
-		kompbels1 = pd.concat([idskomp,idjenbel], axis=1)
+		kompbels1 = pd.concat([idskomp,idjenbel], axis=1, sort=False).sort_index()
 
 		kompbels1.loc[:,'kdskomp'] = kompbels1.loc[:,'kdskomp'].ffill()
 		kompbels1.loc[:,'Uraian'] = kompbels1.loc[:,'Uraian'].ffill()
@@ -188,31 +188,31 @@ with tab1:
 		kompbels2 = kompbels1[['ID', 'Uraian', 'Kode']]
 		kompbels2.rename(columns = {'Kode':'Belanja'}, inplace = True)
 
-		kompbels2A = pd.concat([kompbels2,kdkomp], axis=1)
+		kompbels2A = pd.concat([kompbels2,kdkomp], axis=1, sort=False).sort_index()
 		kompbels2A.loc[:,'kdkomp'] = kompbels2A.loc[:,'kdkomp'].ffill()
 		kompbels2A=kompbels2A.dropna()
 		kompbels2A['ID']=kompbels2A['kdkomp']+'.'+kompbels2A['ID']
 		kompbels2B = kompbels2A[['ID', 'Uraian', 'Belanja']]
 
-		kompbels3 = pd.concat([kompbels2B,kdro], axis=1)
+		kompbels3 = pd.concat([kompbels2B,kdro], axis=1, sort=False).sort_index()
 		kompbels3.loc[:,'kdro'] = kompbels3.loc[:,'kdro'].ffill()
 		kompbels3=kompbels3.dropna()
 		kompbels3['ID']=kompbels3['kdro']+'.'+kompbels3['ID']
 		kompbels4 = kompbels3[['ID', 'Uraian', 'Belanja']]
 
-		kompbels5 = pd.concat([kompbels4,kdkro], axis=1)
+		kompbels5 = pd.concat([kompbels4,kdkro], axis=1, sort=False).sort_index()
 		kompbels5.loc[:,'kdkro'] = kompbels5.loc[:,'kdkro'].ffill()
 		kompbels5=kompbels5.dropna()
 		kompbels5['ID']=kompbels5['kdkro']+'.'+kompbels5['ID']
 		kompbels6 = kompbels5[['ID', 'Uraian', 'Belanja']]
 
-		kompbels7 = pd.concat([kompbels6,kdgiat], axis=1)
+		kompbels7 = pd.concat([kompbels6,kdgiat], axis=1, sort=False).sort_index()
 		kompbels7.loc[:,'kdgiat'] = kompbels7.loc[:,'kdgiat'].ffill()
 		kompbels7=kompbels7.dropna()
 		kompbels7['ID']=kompbels7['kdgiat']+'.'+kompbels7['ID']
 		kompbels8 = kompbels7[['ID', 'Uraian', 'Belanja']]
 
-		kompbels9 = pd.concat([kompbels8,kdprog], axis=1)
+		kompbels9 = pd.concat([kompbels8,kdprog], axis=1, sort=False).sort_index()
 		kompbels9.loc[:,'kdprog'] = kompbels9.loc[:,'kdprog'].ffill()
 		kompbels9=kompbels9.dropna()
 		kompbels9['ID']=kompbels9['kdprog']+'.'+kompbels9['ID']
@@ -220,7 +220,7 @@ with tab1:
 
 		# Proses Bentuk Nilai Akun & Jenis Belanja
 
-		kompbelss1 = pd.concat([idakun,idjenbel], axis=1)
+		kompbelss1 = pd.concat([idakun,idjenbel], axis=1, sort=False).sort_index()
 
 		kompbelss1.loc[:,'kdakun'] = kompbelss1.loc[:,'kdakun'].ffill()
 		kompbelss1.loc[:,'Uraian'] = kompbelss1.loc[:,'Uraian'].ffill()
@@ -229,37 +229,37 @@ with tab1:
 		kompbelss2 = kompbelss1[['ID', 'Uraian', 'Kode']]
 		kompbelss2.rename(columns = {'Kode':'Belanja'}, inplace = True)
 
-		kompbelss2A = pd.concat([kompbelss2,kdskomp], axis=1)
+		kompbelss2A = pd.concat([kompbelss2,kdskomp], axis=1, sort=False).sort_index()
 		kompbelss2A.loc[:,'kdskomp'] = kompbelss2A.loc[:,'kdskomp'].ffill()
 		kompbelss2A=kompbelss2A.dropna()
 		kompbelss2A['ID']=kompbelss2A['kdskomp']+'.'+kompbelss2A['ID']
 		kompbelss2B = kompbelss2A[['ID', 'Uraian', 'Belanja']]
 
-		kompbelss2C = pd.concat([kompbelss2B,kdkomp], axis=1)
+		kompbelss2C = pd.concat([kompbelss2B,kdkomp], axis=1, sort=False).sort_index()
 		kompbelss2C.loc[:,'kdkomp'] = kompbelss2C.loc[:,'kdkomp'].ffill()
 		kompbelss2C=kompbelss2C.dropna()
 		kompbelss2C['ID']=kompbelss2C['kdkomp']+'.'+kompbelss2C['ID']
 		kompbelss2D = kompbelss2C[['ID', 'Uraian', 'Belanja']]
 
-		kompbelss3 = pd.concat([kompbelss2D,kdro], axis=1)
+		kompbelss3 = pd.concat([kompbelss2D,kdro], axis=1, sort=False).sort_index()
 		kompbelss3.loc[:,'kdro'] = kompbelss3.loc[:,'kdro'].ffill()
 		kompbelss3=kompbelss3.dropna()
 		kompbelss3['ID']=kompbelss3['kdro']+'.'+kompbelss3['ID']
 		kompbelss4 = kompbelss3[['ID', 'Uraian', 'Belanja']]
 
-		kompbelss5 = pd.concat([kompbelss4,kdkro], axis=1)
+		kompbelss5 = pd.concat([kompbelss4,kdkro], axis=1, sort=False).sort_index()
 		kompbelss5.loc[:,'kdkro'] = kompbelss5.loc[:,'kdkro'].ffill()
 		kompbelss5=kompbelss5.dropna()
 		kompbelss5['ID']=kompbelss5['kdkro']+'.'+kompbelss5['ID']
 		kompbelss6 = kompbelss5[['ID', 'Uraian', 'Belanja']]
 
-		kompbelss7 = pd.concat([kompbelss6,kdgiat], axis=1)
+		kompbelss7 = pd.concat([kompbelss6,kdgiat], axis=1, sort=False).sort_index()
 		kompbelss7.loc[:,'kdgiat'] = kompbelss7.loc[:,'kdgiat'].ffill()
 		kompbelss7=kompbelss7.dropna()
 		kompbelss7['ID']=kompbelss7['kdgiat']+'.'+kompbelss7['ID']
 		kompbelss8 = kompbelss7[['ID', 'Uraian', 'Belanja']]
 
-		kompbelss9 = pd.concat([kompbelss8,kdprog], axis=1)
+		kompbelss9 = pd.concat([kompbelss8,kdprog], axis=1, sort=False).sort_index()
 		kompbelss9.loc[:,'kdprog'] = kompbelss9.loc[:,'kdprog'].ffill()
 		kompbelss9=kompbelss9.dropna()
 		kompbelss9['ID']=kompbelss9['kdprog']+'.'+kompbelss9['ID']
@@ -267,7 +267,7 @@ with tab1:
 
 		# Gabung Jan-Des dengan Pagu
 
-		rpdkomp = pd.concat([kompbel10,df3], axis=1)
+		rpdkomp = pd.concat([kompbel10,df3], axis=1, sort=False).sort_index()
 		rpdkomp=rpdkomp.dropna()
 
 		rpdkomp['Belanja'] = rpdkomp['Belanja'].replace(to_replace = ['51','52','53','57'], value = ['Pegawai','Barang','Modal','Bantuan Sosial'])
@@ -282,7 +282,7 @@ with tab1:
 		rpdkompsum = rpdkompsum[['ID','Kode','Uraian', 'Belanja', 'Keterangan', 'Pagu', 'Sisa RPD','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]
 
 
-		rpdskomp = pd.concat([kompbels10,df3], axis=1)
+		rpdskomp = pd.concat([kompbels10,df3], axis=1, sort=False).sort_index()
 		rpdskomp=rpdskomp.dropna()
 
 		rpdskomp['Belanja'] = rpdskomp['Belanja'].replace(to_replace = ['51','52','53','57'], value = ['Pegawai','Barang','Modal','Bantuan Sosial'])
@@ -297,7 +297,7 @@ with tab1:
 		rpdskompsum = rpdskompsum[['ID','Kode','Uraian', 'Belanja', 'Keterangan', 'Pagu', 'Sisa RPD','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]
 
 
-		rpdakun = pd.concat([kompbelss10,df3], axis=1)
+		rpdakun = pd.concat([kompbelss10,df3], axis=1, sort=False).sort_index()
 		rpdakun=rpdakun.dropna()
 
 		rpdakun['Belanja'] = rpdakun['Belanja'].replace(to_replace = ['51','52','53','57'], value = ['Pegawai','Barang','Modal','Bantuan Sosial'])
@@ -400,7 +400,7 @@ with tab1:
 		idkompZ.columns = ['kdkomp']
 		idskompZ.columns = ['kdskomp']
 
-		idakunZ=idakunZ.drop(['Uraian'], axis=1)
+		idakunZ=idakunZ.drop(['Uraian'], axis=1, sort=False).sort_index()
 		idakunZ.columns = ['kdakun','pagu']
 
 		# Penyesuaian Kode Program, KRO, dan RO
@@ -411,7 +411,7 @@ with tab1:
 		kdroZ = idroZ['kdro'].str[-3:]
 
 		# Pembentukan RPD per Komponen
-		idkompZZ = pd.concat([kdprogZ,kdgiatZ,kdkroZ,kdroZ,idkompZ], axis=1)
+		idkompZZ = pd.concat([kdprogZ,kdgiatZ,kdkroZ,kdroZ,idkompZ], axis=1, sort=False).sort_index()
 
 		idkompZZ.loc[:,'kdprog'] = idkompZZ.loc[:,'kdprog'].ffill()
 		idkompZZ.loc[:,'kdgiat'] = idkompZZ.loc[:,'kdgiat'].ffill()
@@ -422,24 +422,24 @@ with tab1:
 		idkompZZ['ID']=idkompZZ['kdprog']+"."+idkompZZ['kdgiat']+"."+idkompZZ['kdkro']+"."+idkompZZ['kdro']+"."+idkompZZ['kdkomp']
 		kdkompZZ = idkompZZ['ID']
 
-		sumkompZ = pd.concat([kdkompZZ,idakunZ], axis=1)
+		sumkompZ = pd.concat([kdkompZZ,idakunZ], axis=1, sort=False).sort_index()
 		sumkompZ.loc[:,'ID'] = sumkompZ.loc[:,'ID'].ffill()
 		sumkompZ=sumkompZ.dropna()
 
 		sumkompZ['ID']=sumkompZ['ID']+"."+sumkompZ['kdakun'].str[:2]
-		sumkompZ=sumkompZ.drop(['kdakun'], axis=1)
+		sumkompZ=sumkompZ.drop(['kdakun'], axis=1, sort=False).sort_index()
 
 		sumkompZ = sumkompZ.groupby(['ID']).sum()[['pagu']]
 		sumkompZ.reset_index(inplace=True)
 		sumkompZ['Pagu']= sumkompZ[['pagu']].sum(axis=1)
 		sumkompZ=sumkompZ[['ID','Pagu']]
 
-		satkerZ=satker.drop(['Pagu'], axis=1)
+		satkerZ=satker.drop(['Pagu'], axis=1, sort=False).sort_index()
 		satkerZZ = pd.merge(satkerZ,sumkompZ,on='ID',how='outer')
 		satkerZZ = satkerZZ.reindex(['ID','Satker','Kode','Uraian','Belanja','Keterangan','Pagu','Sisa RPD', 'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], axis='columns')
 
 		# Pembentukan RPD per Subkomponen
-		idskompZZ = pd.concat([kdprogZ,kdgiatZ,kdkroZ,kdroZ,idkompZ,idskompZ], axis=1)
+		idskompZZ = pd.concat([kdprogZ,kdgiatZ,kdkroZ,kdroZ,idkompZ,idskompZ], axis=1, sort=False).sort_index()
 
 		idskompZZ.loc[:,'kdprog'] = idskompZZ.loc[:,'kdprog'].ffill()
 		idskompZZ.loc[:,'kdgiat'] = idskompZZ.loc[:,'kdgiat'].ffill()
@@ -451,24 +451,24 @@ with tab1:
 		idskompZZ['ID']=idskompZZ['kdprog']+"."+idskompZZ['kdgiat']+"."+idskompZZ['kdkro']+"."+idskompZZ['kdro']+"."+idskompZZ['kdkomp']+"."+idskompZZ['kdskomp']
 		kdskompZZ = idskompZZ['ID']
 
-		sumskompZ = pd.concat([kdskompZZ,idakunZ], axis=1)
+		sumskompZ = pd.concat([kdskompZZ,idakunZ], axis=1, sort=False).sort_index()
 		sumskompZ.loc[:,'ID'] = sumskompZ.loc[:,'ID'].ffill()
 		sumskompZ=sumskompZ.dropna()
 
 		sumskompZ['ID']=sumskompZ['ID']+"."+sumskompZ['kdakun'].str[:2]
-		sumskompZ=sumskompZ.drop(['kdakun'], axis=1)
+		sumskompZ=sumskompZ.drop(['kdakun'], axis=1, sort=False).sort_index()
 
 		sumskompZ = sumskompZ.groupby(['ID']).sum()[['pagu']]
 		sumskompZ.reset_index(inplace=True)
 		sumskompZ['Pagu']= sumskompZ[['pagu']].sum(axis=1)
 		sumskompZ=sumskompZ[['ID','Pagu']]
 
-		satker2Z=satker2.drop(['Pagu'], axis=1)
+		satker2Z=satker2.drop(['Pagu'], axis=1, sort=False).sort_index()
 		satker2ZZ = pd.merge(satker2Z,sumskompZ,on='ID',how='outer')
 		satker2ZZ = satker2ZZ.reindex(['ID','Satker','Kode','Uraian','Belanja','Keterangan','Pagu','Sisa RPD', 'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], axis='columns')
 
 		# Pembentukan RPD per Akun
-		idakunZZ = pd.concat([kdprogZ,kdgiatZ,kdkroZ,kdroZ,idkompZ,idskompZ,idakunZ], axis=1)
+		idakunZZ = pd.concat([kdprogZ,kdgiatZ,kdkroZ,kdroZ,idkompZ,idskompZ,idakunZ], axis=1, sort=False).sort_index()
 
 		idakunZZ.loc[:,'kdprog'] = idakunZZ.loc[:,'kdprog'].ffill()
 		idakunZZ.loc[:,'kdgiat'] = idakunZZ.loc[:,'kdgiat'].ffill()
@@ -481,19 +481,19 @@ with tab1:
 		idakunZZ['ID']=idakunZZ['kdprog']+"."+idakunZZ['kdgiat']+"."+idakunZZ['kdkro']+"."+idakunZZ['kdro']+"."+idakunZZ['kdkomp']+"."+idakunZZ['kdskomp']+"."+idakunZZ['kdakun']
 		kdakunZZ = idakunZZ['ID']
 
-		sumakunZ = pd.concat([kdakunZZ,idakunZ], axis=1)
+		sumakunZ = pd.concat([kdakunZZ,idakunZ], axis=1, sort=False).sort_index()
 		sumakunZ.loc[:,'ID'] = sumakunZ.loc[:,'ID'].ffill()
 		sumakunZ=sumakunZ.dropna()
 
 		sumakunZ['ID']=sumakunZ['ID']+"."+sumakunZ['kdakun'].str[:2]
-		sumakunZ=sumakunZ.drop(['kdakun'], axis=1)
+		sumakunZ=sumakunZ.drop(['kdakun'], axis=1, sort=False).sort_index()
 
 		sumakunZ = sumakunZ.groupby(['ID']).sum()[['pagu']]
 		sumakunZ.reset_index(inplace=True)
 		sumakunZ['Pagu']= sumakunZ[['pagu']].sum(axis=1)
 		sumakunZ=sumakunZ[['ID','Pagu']]
 
-		satker3Z=satker3.drop(['Pagu'], axis=1)
+		satker3Z=satker3.drop(['Pagu'], axis=1, sort=False).sort_index()
 		satker3ZZ = pd.merge(satker3Z,sumakunZ,on='ID',how='outer')
 		satker3ZZ = satker3ZZ.reindex(['ID','Satker','Kode','Uraian','Belanja','Keterangan','Pagu','Sisa RPD', 'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], axis='columns')
 
@@ -1122,7 +1122,7 @@ with tab2:
 
 		# Proses Bentuk Uraian RO & KRO
 
-		urpisah = pd.concat([kdprog,idkro], axis=1)
+		urpisah = pd.concat([kdprog,idkro], axis=1, sort=False).sort_index()
 		urpisah.loc[:,'kdprog'] = urpisah.loc[:,'kdprog'].ffill()
 		urpisah=urpisah.dropna()
 		urpisah['ID']=urpisah['kdprog']+'.'+urpisah['kdkro']+'.000.000.00'
@@ -1131,7 +1131,7 @@ with tab2:
 		urpisah = urpisah[['ID', 'Kode','Uraian']]
 		urpisah.reset_index(drop=True, inplace=True)
 
-		urkro = pd.concat([kdprog,idkro], axis=1)
+		urkro = pd.concat([kdprog,idkro], axis=1, sort=False).sort_index()
 		urkro.loc[:,'kdprog'] = urkro.loc[:,'kdprog'].ffill()
 		urkro=urkro.dropna()
 		urkro['ID']=urkro['kdprog']+'.'+urkro['kdkro']+'.000.000.00'
@@ -1139,7 +1139,7 @@ with tab2:
 		urkro = urkro[['ID', 'Kode','Uraian']]
 		urkro.reset_index(drop=True, inplace=True)
 
-		urro = pd.concat([kdprog,kdgiat,idro], axis=1)
+		urro = pd.concat([kdprog,kdgiat,idro], axis=1, sort=False).sort_index()
 		urro.loc[:,'kdprog'] = urro.loc[:,'kdprog'].ffill()
 		urro.loc[:,'kdgiat'] = urro.loc[:,'kdgiat'].ffill()
 		urro=urro.dropna()
@@ -1148,7 +1148,7 @@ with tab2:
 		urro = urro[['ID', 'Kode','Uraian']]
 		urro.reset_index(drop=True, inplace=True)
 
-		urkomp = pd.concat([kdprog,kdgiat,kdkro,kdro,idkomp], axis=1)
+		urkomp = pd.concat([kdprog,kdgiat,kdkro,kdro,idkomp], axis=1, sort=False).sort_index()
 		urkomp.loc[:,'kdprog'] = urkomp.loc[:,'kdprog'].ffill()
 		urkomp.loc[:,'kdgiat'] = urkomp.loc[:,'kdgiat'].ffill()
 		urkomp.loc[:,'kdkro'] = urkomp.loc[:,'kdkro'].ffill()
@@ -1159,7 +1159,7 @@ with tab2:
 		urkomp = urkomp[['ID', 'Kode','Uraian']]
 		urkomp.reset_index(drop=True, inplace=True)
 
-		urskomp = pd.concat([kdprog,kdgiat,kdkro,kdro,kdkomp,idskomp], axis=1)
+		urskomp = pd.concat([kdprog,kdgiat,kdkro,kdro,kdkomp,idskomp], axis=1, sort=False).sort_index()
 		urskomp.loc[:,'kdprog'] = urskomp.loc[:,'kdprog'].ffill()
 		urskomp.loc[:,'kdgiat'] = urskomp.loc[:,'kdgiat'].ffill()
 		urskomp.loc[:,'kdkro'] = urskomp.loc[:,'kdkro'].ffill()
@@ -1173,7 +1173,7 @@ with tab2:
 
 		# Proses Bentuk Nilai Komponen & Jenis Belanja
 
-		kompbel1 = pd.concat([idkomp,idjenbel], axis=1)
+		kompbel1 = pd.concat([idkomp,idjenbel], axis=1, sort=False).sort_index()
 
 		kompbel1.loc[:,'kdkomp'] = kompbel1.loc[:,'kdkomp'].ffill()
 		kompbel1.loc[:,'Uraian'] = kompbel1.loc[:,'Uraian'].ffill()
@@ -1182,25 +1182,25 @@ with tab2:
 		kompbel2 = kompbel1[['ID', 'Uraian', 'Kode']]
 		kompbel2.rename(columns = {'Kode':'Belanja'}, inplace = True)
 
-		kompbel3 = pd.concat([kompbel2,kdro], axis=1)
+		kompbel3 = pd.concat([kompbel2,kdro], axis=1, sort=False).sort_index()
 		kompbel3.loc[:,'kdro'] = kompbel3.loc[:,'kdro'].ffill()
 		kompbel3=kompbel3.dropna()
 		kompbel3['ID']=kompbel3['kdro']+'.'+kompbel3['ID']
 		kompbel4 = kompbel3[['ID', 'Uraian', 'Belanja']]
 
-		kompbel5 = pd.concat([kompbel4,kdkro], axis=1)
+		kompbel5 = pd.concat([kompbel4,kdkro], axis=1, sort=False).sort_index()
 		kompbel5.loc[:,'kdkro'] = kompbel5.loc[:,'kdkro'].ffill()
 		kompbel5=kompbel5.dropna()
 		kompbel5['ID']=kompbel5['kdkro']+'.'+kompbel5['ID']
 		kompbel6 = kompbel5[['ID', 'Uraian', 'Belanja']]
 
-		kompbel7 = pd.concat([kompbel6,kdgiat], axis=1)
+		kompbel7 = pd.concat([kompbel6,kdgiat], axis=1, sort=False).sort_index()
 		kompbel7.loc[:,'kdgiat'] = kompbel7.loc[:,'kdgiat'].ffill()
 		kompbel7=kompbel7.dropna()
 		kompbel7['ID']=kompbel7['kdgiat']+'.'+kompbel7['ID']
 		kompbel8 = kompbel7[['ID', 'Uraian', 'Belanja']]
 
-		kompbel9 = pd.concat([kompbel8,kdprog], axis=1)
+		kompbel9 = pd.concat([kompbel8,kdprog], axis=1, sort=False).sort_index()
 		kompbel9.loc[:,'kdprog'] = kompbel9.loc[:,'kdprog'].ffill()
 		kompbel9=kompbel9.dropna()
 		kompbel9['ID']=kompbel9['kdprog']+'.'+kompbel9['ID']
@@ -1208,7 +1208,7 @@ with tab2:
 
 		# Proses Bentuk Nilai Subkomponen & Jenis Belanja
 
-		kompbels1 = pd.concat([idskomp,idjenbel], axis=1)
+		kompbels1 = pd.concat([idskomp,idjenbel], axis=1, sort=False).sort_index()
 
 		kompbels1.loc[:,'kdskomp'] = kompbels1.loc[:,'kdskomp'].ffill()
 		kompbels1.loc[:,'Uraian'] = kompbels1.loc[:,'Uraian'].ffill()
@@ -1217,31 +1217,31 @@ with tab2:
 		kompbels2 = kompbels1[['ID', 'Uraian', 'Kode']]
 		kompbels2.rename(columns = {'Kode':'Belanja'}, inplace = True)
 
-		kompbels2A = pd.concat([kompbels2,kdkomp], axis=1)
+		kompbels2A = pd.concat([kompbels2,kdkomp], axis=1, sort=False).sort_index()
 		kompbels2A.loc[:,'kdkomp'] = kompbels2A.loc[:,'kdkomp'].ffill()
 		kompbels2A=kompbels2A.dropna()
 		kompbels2A['ID']=kompbels2A['kdkomp']+'.'+kompbels2A['ID']
 		kompbels2B = kompbels2A[['ID', 'Uraian', 'Belanja']]
 
-		kompbels3 = pd.concat([kompbels2B,kdro], axis=1)
+		kompbels3 = pd.concat([kompbels2B,kdro], axis=1, sort=False).sort_index()
 		kompbels3.loc[:,'kdro'] = kompbels3.loc[:,'kdro'].ffill()
 		kompbels3=kompbels3.dropna()
 		kompbels3['ID']=kompbels3['kdro']+'.'+kompbels3['ID']
 		kompbels4 = kompbels3[['ID', 'Uraian', 'Belanja']]
 
-		kompbels5 = pd.concat([kompbels4,kdkro], axis=1)
+		kompbels5 = pd.concat([kompbels4,kdkro], axis=1, sort=False).sort_index()
 		kompbels5.loc[:,'kdkro'] = kompbels5.loc[:,'kdkro'].ffill()
 		kompbels5=kompbels5.dropna()
 		kompbels5['ID']=kompbels5['kdkro']+'.'+kompbels5['ID']
 		kompbels6 = kompbels5[['ID', 'Uraian', 'Belanja']]
 
-		kompbels7 = pd.concat([kompbels6,kdgiat], axis=1)
+		kompbels7 = pd.concat([kompbels6,kdgiat], axis=1, sort=False).sort_index()
 		kompbels7.loc[:,'kdgiat'] = kompbels7.loc[:,'kdgiat'].ffill()
 		kompbels7=kompbels7.dropna()
 		kompbels7['ID']=kompbels7['kdgiat']+'.'+kompbels7['ID']
 		kompbels8 = kompbels7[['ID', 'Uraian', 'Belanja']]
 
-		kompbels9 = pd.concat([kompbels8,kdprog], axis=1)
+		kompbels9 = pd.concat([kompbels8,kdprog], axis=1, sort=False).sort_index()
 		kompbels9.loc[:,'kdprog'] = kompbels9.loc[:,'kdprog'].ffill()
 		kompbels9=kompbels9.dropna()
 		kompbels9['ID']=kompbels9['kdprog']+'.'+kompbels9['ID']
@@ -1249,7 +1249,7 @@ with tab2:
 
 		# Proses Bentuk Nilai Akun & Jenis Belanja
 
-		kompbelss1 = pd.concat([idakun,idjenbel], axis=1)
+		kompbelss1 = pd.concat([idakun,idjenbel], axis=1, sort=False).sort_index()
 
 		kompbelss1.loc[:,'kdakun'] = kompbelss1.loc[:,'kdakun'].ffill()
 		kompbelss1.loc[:,'Uraian'] = kompbelss1.loc[:,'Uraian'].ffill()
@@ -1258,37 +1258,37 @@ with tab2:
 		kompbelss2 = kompbelss1[['ID', 'Uraian', 'Kode']]
 		kompbelss2.rename(columns = {'Kode':'Belanja'}, inplace = True)
 
-		kompbelss2A = pd.concat([kompbelss2,kdskomp], axis=1)
+		kompbelss2A = pd.concat([kompbelss2,kdskomp], axis=1, sort=False).sort_index()
 		kompbelss2A.loc[:,'kdskomp'] = kompbelss2A.loc[:,'kdskomp'].ffill()
 		kompbelss2A=kompbelss2A.dropna()
 		kompbelss2A['ID']=kompbelss2A['kdskomp']+'.'+kompbelss2A['ID']
 		kompbelss2B = kompbelss2A[['ID', 'Uraian', 'Belanja']]
 
-		kompbelss2C = pd.concat([kompbelss2B,kdkomp], axis=1)
+		kompbelss2C = pd.concat([kompbelss2B,kdkomp], axis=1, sort=False).sort_index()
 		kompbelss2C.loc[:,'kdkomp'] = kompbelss2C.loc[:,'kdkomp'].ffill()
 		kompbelss2C=kompbelss2C.dropna()
 		kompbelss2C['ID']=kompbelss2C['kdkomp']+'.'+kompbelss2C['ID']
 		kompbelss2D = kompbelss2C[['ID', 'Uraian', 'Belanja']]
 
-		kompbelss3 = pd.concat([kompbelss2D,kdro], axis=1)
+		kompbelss3 = pd.concat([kompbelss2D,kdro], axis=1, sort=False).sort_index()
 		kompbelss3.loc[:,'kdro'] = kompbelss3.loc[:,'kdro'].ffill()
 		kompbelss3=kompbelss3.dropna()
 		kompbelss3['ID']=kompbelss3['kdro']+'.'+kompbelss3['ID']
 		kompbelss4 = kompbelss3[['ID', 'Uraian', 'Belanja']]
 
-		kompbelss5 = pd.concat([kompbelss4,kdkro], axis=1)
+		kompbelss5 = pd.concat([kompbelss4,kdkro], axis=1, sort=False).sort_index()
 		kompbelss5.loc[:,'kdkro'] = kompbelss5.loc[:,'kdkro'].ffill()
 		kompbelss5=kompbelss5.dropna()
 		kompbelss5['ID']=kompbelss5['kdkro']+'.'+kompbelss5['ID']
 		kompbelss6 = kompbelss5[['ID', 'Uraian', 'Belanja']]
 
-		kompbelss7 = pd.concat([kompbelss6,kdgiat], axis=1)
+		kompbelss7 = pd.concat([kompbelss6,kdgiat], axis=1, sort=False).sort_index()
 		kompbelss7.loc[:,'kdgiat'] = kompbelss7.loc[:,'kdgiat'].ffill()
 		kompbelss7=kompbelss7.dropna()
 		kompbelss7['ID']=kompbelss7['kdgiat']+'.'+kompbelss7['ID']
 		kompbelss8 = kompbelss7[['ID', 'Uraian', 'Belanja']]
 
-		kompbelss9 = pd.concat([kompbelss8,kdprog], axis=1)
+		kompbelss9 = pd.concat([kompbelss8,kdprog], axis=1, sort=False).sort_index()
 		kompbelss9.loc[:,'kdprog'] = kompbelss9.loc[:,'kdprog'].ffill()
 		kompbelss9=kompbelss9.dropna()
 		kompbelss9['ID']=kompbelss9['kdprog']+'.'+kompbelss9['ID']
@@ -1296,7 +1296,7 @@ with tab2:
 
 		# Gabung Jan-Des dengan Pagu
 
-		rpdkomp = pd.concat([kompbel10,df3], axis=1)
+		rpdkomp = pd.concat([kompbel10,df3], axis=1, sort=False).sort_index()
 		rpdkomp=rpdkomp.dropna()
 
 		rpdkomp['Belanja'] = rpdkomp['Belanja'].replace(to_replace = ['51','52','53','57'], value = ['Pegawai','Barang','Modal','Bantuan Sosial'])
@@ -1311,7 +1311,7 @@ with tab2:
 		rpdkompsum = rpdkompsum[['ID','Kode','Uraian', 'Belanja', 'Keterangan', 'Pagu', 'Sisa RPD','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]
 
 
-		rpdskomp = pd.concat([kompbels10,df3], axis=1)
+		rpdskomp = pd.concat([kompbels10,df3], axis=1, sort=False).sort_index()
 		rpdskomp=rpdskomp.dropna()
 
 		rpdskomp['Belanja'] = rpdskomp['Belanja'].replace(to_replace = ['51','52','53','57'], value = ['Pegawai','Barang','Modal','Bantuan Sosial'])
@@ -1326,7 +1326,7 @@ with tab2:
 		rpdskompsum = rpdskompsum[['ID','Kode','Uraian', 'Belanja', 'Keterangan', 'Pagu', 'Sisa RPD','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]
 
 
-		rpdakun = pd.concat([kompbelss10,df3], axis=1)
+		rpdakun = pd.concat([kompbelss10,df3], axis=1, sort=False).sort_index()
 		rpdakun=rpdakun.dropna()
 
 		rpdakun['Belanja'] = rpdakun['Belanja'].replace(to_replace = ['51','52','53','57'], value = ['Pegawai','Barang','Modal','Bantuan Sosial'])

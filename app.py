@@ -6,8 +6,8 @@ from csv import writer
 import datetime
 import datetime
 import warnings
-from pandas.core.common import SettingWithCopyWarning
 
+from pandas.errors import SettingWithCopyWarning
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
 
 # Untuk Download

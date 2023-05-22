@@ -23,7 +23,7 @@ st.write("Follow [Instagram](https://www.instagram.com/djpbbabel/) dan [Youtube]
 st.write("Panduan aplikasi [klik di sini](http://bit.ly/materidjpbbabel).")
 st.markdown('---')
 
-tab1, tab2 = st.tabs(["Revisi Pemutakhiran KPA", "Revisi Halaman III DIPA"])
+tab2, tab1 = st.tabs(["Revisi Halaman III DIPA", "Revisi Pemutakhiran KPA"])
 
 with tab1:
 	st.header("Unduh RPD DIPA Terakhir untuk membantu Revisi Pemutakhiran KPA")
@@ -400,7 +400,7 @@ with tab1:
 		idkompZ.columns = ['kdkomp']
 		idskompZ.columns = ['kdskomp']
 
-		idakunZ=idakunZ.drop(['Uraian'], axis=1, sort=False).sort_index()
+		idakunZ=idakunZ.drop(['Uraian'], axis=1)
 		idakunZ.columns = ['kdakun','pagu']
 
 		# Penyesuaian Kode Program, KRO, dan RO
@@ -427,14 +427,14 @@ with tab1:
 		sumkompZ=sumkompZ.dropna()
 
 		sumkompZ['ID']=sumkompZ['ID']+"."+sumkompZ['kdakun'].str[:2]
-		sumkompZ=sumkompZ.drop(['kdakun'], axis=1, sort=False).sort_index()
+		sumkompZ=sumkompZ.drop(['kdakun'], axis=1)
 
 		sumkompZ = sumkompZ.groupby(['ID']).sum()[['pagu']]
 		sumkompZ.reset_index(inplace=True)
 		sumkompZ['Pagu']= sumkompZ[['pagu']].sum(axis=1)
 		sumkompZ=sumkompZ[['ID','Pagu']]
 
-		satkerZ=satker.drop(['Pagu'], axis=1, sort=False).sort_index()
+		satkerZ=satker.drop(['Pagu'], axis=1)
 		satkerZZ = pd.merge(satkerZ,sumkompZ,on='ID',how='outer')
 		satkerZZ = satkerZZ.reindex(['ID','Satker','Kode','Uraian','Belanja','Keterangan','Pagu','Sisa RPD', 'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], axis='columns')
 
@@ -456,14 +456,14 @@ with tab1:
 		sumskompZ=sumskompZ.dropna()
 
 		sumskompZ['ID']=sumskompZ['ID']+"."+sumskompZ['kdakun'].str[:2]
-		sumskompZ=sumskompZ.drop(['kdakun'], axis=1, sort=False).sort_index()
+		sumskompZ=sumskompZ.drop(['kdakun'], axis=1)
 
 		sumskompZ = sumskompZ.groupby(['ID']).sum()[['pagu']]
 		sumskompZ.reset_index(inplace=True)
 		sumskompZ['Pagu']= sumskompZ[['pagu']].sum(axis=1)
 		sumskompZ=sumskompZ[['ID','Pagu']]
 
-		satker2Z=satker2.drop(['Pagu'], axis=1, sort=False).sort_index()
+		satker2Z=satker2.drop(['Pagu'], axis=1)
 		satker2ZZ = pd.merge(satker2Z,sumskompZ,on='ID',how='outer')
 		satker2ZZ = satker2ZZ.reindex(['ID','Satker','Kode','Uraian','Belanja','Keterangan','Pagu','Sisa RPD', 'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], axis='columns')
 
@@ -486,14 +486,14 @@ with tab1:
 		sumakunZ=sumakunZ.dropna()
 
 		sumakunZ['ID']=sumakunZ['ID']+"."+sumakunZ['kdakun'].str[:2]
-		sumakunZ=sumakunZ.drop(['kdakun'], axis=1, sort=False).sort_index()
+		sumakunZ=sumakunZ.drop(['kdakun'], axis=1)
 
 		sumakunZ = sumakunZ.groupby(['ID']).sum()[['pagu']]
 		sumakunZ.reset_index(inplace=True)
 		sumakunZ['Pagu']= sumakunZ[['pagu']].sum(axis=1)
 		sumakunZ=sumakunZ[['ID','Pagu']]
 
-		satker3Z=satker3.drop(['Pagu'], axis=1, sort=False).sort_index()
+		satker3Z=satker3.drop(['Pagu'], axis=1)
 		satker3ZZ = pd.merge(satker3Z,sumakunZ,on='ID',how='outer')
 		satker3ZZ = satker3ZZ.reindex(['ID','Satker','Kode','Uraian','Belanja','Keterangan','Pagu','Sisa RPD', 'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], axis='columns')
 

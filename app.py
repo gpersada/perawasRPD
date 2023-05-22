@@ -1401,7 +1401,7 @@ with tab2:
 		real2.rename(columns={'NILAI RUPIAH': 'nilai'}, inplace=True)
 		real2[['satker', 'kppn', 'Akun','program','kro','sdana','bank','kewenangan','lokasi','budget','xxx','xxxx','ro','Komponen','Sub Komponen','xxxxx']] = real2['KODE COA'].str.split('.', expand=True)
 		real2['ID'] = real2['program'].str[-2:]+"."+real2['kro'].str[:4]+"."+real2['kro'].str[-3:]+"."+real2['ro']+"."+real2['Komponen']+"."+real2['Akun'].str[:2]
-		real2['TANGGAL SP2D']=pd.to_datetime(real2['TANGGAL SP2D'], format="%d-%b-%y")
+		real2['TANGGAL SP2D']=pd.to_datetime(real2['TANGGAL SP2D'], format="'%d-%b-%y")
 		real2['bulan'] = real2['TANGGAL SP2D'].dt.month_name().str[:3]
 		real2['Jenis Belanja'] = real2['Akun'].str[:2]
 		real2 = real2[["ID", "bulan",	"nilai"]]
@@ -1423,7 +1423,7 @@ with tab2:
 		realZ2.rename(columns={'NILAI RUPIAH': 'nilai'}, inplace=True)
 		realZ2[['satker', 'kppn', 'Akun','program','kro','sdana','bank','kewenangan','lokasi','budget','xxx','xxxx','ro','Komponen','Sub Komponen','xxxxx']] = realZ2['KODE COA'].str.split('.', expand=True)
 		realZ2['ID'] = realZ2['program'].str[-2:]+"."+realZ2['kro'].str[:4]+"."+realZ2['kro'].str[-3:]+"."+realZ2['ro']+"."+realZ2['Komponen']+"."+realZ2['Sub Komponen']+"."+realZ2['Akun'].str[:2]
-		realZ2['TANGGAL SP2D']=pd.to_datetime(realZ2['TANGGAL SP2D'], format="%d-%b-%y")
+		realZ2['TANGGAL SP2D']=pd.to_datetime(realZ2['TANGGAL SP2D'], format="'%d-%b-%y")
 		realZ2['bulan'] = realZ2['TANGGAL SP2D'].dt.month_name().str[:3]
 		realZ2['Jenis Belanja'] = realZ2['Akun'].str[:2]
 		realZ2 = realZ2[["ID", "bulan",	"nilai"]]
@@ -1445,7 +1445,7 @@ with tab2:
 		realZZ2.rename(columns={'NILAI RUPIAH': 'nilai'}, inplace=True)
 		realZZ2[['satker', 'kppn', 'Akun','program','kro','sdana','bank','kewenangan','lokasi','budget','xxx','xxxx','ro','Komponen','Sub Komponen','xxxxx']] = realZZ2['KODE COA'].str.split('.', expand=True)
 		realZZ2['ID'] = realZZ2['program'].str[-2:]+"."+realZZ2['kro'].str[:4]+"."+realZZ2['kro'].str[-3:]+"."+realZZ2['ro']+"."+realZZ2['Komponen']+"."+realZZ2['Sub Komponen']+"."+realZZ2['Akun']+"."+realZZ2['Akun'].str[:2]
-		realZZ2['TANGGAL SP2D']=pd.to_datetime(realZZ2['TANGGAL SP2D'], format="%d-%b-%y")
+		realZZ2['TANGGAL SP2D']=pd.to_datetime(realZZ2['TANGGAL SP2D'], format="'%d-%b-%y")
 		realZZ2['bulan'] = realZZ2['TANGGAL SP2D'].dt.month_name().str[:3]
 		realZZ2['Jenis Belanja'] = realZZ2['Akun'].str[:2]
 		realZZ2 = realZZ2[["ID", "bulan",	"nilai"]]

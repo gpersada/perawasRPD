@@ -40,7 +40,8 @@ with tab1:
 		kode_satker = info['kdsatker'].iloc[0]
 
 		# Mencatat log pengguna
-		stringTimestamp = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+		timestamp_now = datetime.now()
+		stringTimestamp = timestamp_now.strftime("%Y-%m-%d %H:%M:%S")
 		setLog = [nama_satker, kode_satker, stringTimestamp]
 
 		file_path = 'logrpdterakhir.csv'

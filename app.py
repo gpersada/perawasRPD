@@ -37,7 +37,16 @@ with tab1:
 		info.rename(columns = {'Unnamed: 4':'kdsatker', 'Unnamed: 6':'nmsatker'}, inplace = True)
 		info['kdsatker'] = info['kdsatker'].str[-6:]
 		nama_satker = info['nmsatker'].iloc[0]  +' (' + info['kdsatker'].iloc[0] + ')'
-		kode_satker = info['kdsatker'].iloc[0]	
+		kode_satker = info['kdsatker'].iloc[0]
+
+		# Mencatat log pengguna
+		stringTimestamp = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+		setLog = [nama_satker, kode_satker, stringTimestamp]
+
+		file_path = 'logrpdterakhir.csv'
+		with open(file_path, mode='w', newline='') as file:
+			writer = csv.writer(file)
+			writer.writerows(setLog)	
 
 		# Master Data RPD
 

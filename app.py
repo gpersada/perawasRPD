@@ -4,7 +4,7 @@ import io
 import numpy as np
 from csv import writer
 import datetime
-import datetime
+from datetime import datetime
 import warnings
 
 from pandas.errors import SettingWithCopyWarning

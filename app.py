@@ -47,7 +47,7 @@ with tab1:
 		stringTimestamp = timestamp_now.strftime("%Y-%m-%d %H:%M:%S")
 		setLog = [stringTimestamp, "Revisi KPA",kode_satker, nama_satker]
 		gc = gspread.service_account_from_dict(st.secrets["gs_service_account"])
-		spreadsheet = gc.open("Log User Perawas RPD").sheet1
+		spreadsheet = gc.open("Log User Perawas RPD").sheet2
 		spreadsheet.append_row(setLog)
 
 		# Master Data RPD
@@ -1084,7 +1084,7 @@ with tab2:
 		stringTimestamp = timestamp_now.strftime("%Y-%m-%d %H:%M:%S")
 		setLog = [stringTimestamp, "Revisi Hal III DIPA",kode_satker, nama_satker]
 		gc = gspread.service_account_from_dict(st.secrets["gs_service_account"])
-		spreadsheet = gc.open("Log User Perawas RPD").sheet1
+		spreadsheet = gc.open("Log User Perawas RPD").sheet2
 		spreadsheet.append_row(setLog)
 
 		# Master Data RPD

@@ -8,6 +8,7 @@ import datetime
 from datetime import datetime
 import warnings
 import gspread
+import pytz
 
 from pandas.errors import SettingWithCopyWarning
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
@@ -42,7 +43,7 @@ with tab1:
 		kode_satker = info['kdsatker'].iloc[0]
 
 		# Mencatat log pengguna
-		timestamp_now = datetime.now()
+		timestamp_now = datetime.now(pytz.timezone('Asia/Jakarta'))
 		stringTimestamp = timestamp_now.strftime("%Y-%m-%d %H:%M:%S")
 		setLog = [stringTimestamp, "Revisi KPA",kode_satker, nama_satker]
 

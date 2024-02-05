@@ -8,7 +8,6 @@ import datetime
 from datetime import datetime
 import warnings
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 
 from pandas.errors import SettingWithCopyWarning
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)

@@ -38,13 +38,13 @@ with tab1:
 		info = pd.read_excel(uploaded_file2, index_col=None, nrows = 1, dtype=str, engine='openpyxl')
 		info.rename(columns = {'Unnamed: 4':'kdsatker', 'Unnamed: 6':'nmsatker'}, inplace = True)
 		info['kdsatker'] = info['kdsatker'].str[-6:]
-		namaSatker = info['nmsatker'].iloc[0]  +' (' + info['kdsatker'].iloc[0] + ')'
-		kodeSatker = info['kdsatker'].iloc[0]
+		nama_satker = info['nmsatker'].iloc[0]  +' (' + info['kdsatker'].iloc[0] + ')'
+		kode_satker = info['kdsatker'].iloc[0]
 
 		# Mencatat log pengguna
 		timestamp_now = datetime.now()
 		stringTimestamp = timestamp_now.strftime("%Y-%m-%d %H:%M:%S")
-		setLog = [stringTimestamp, "Revisi KPA",kodeSatker, namaSatker]
+		setLog = [stringTimestamp, "Revisi KPA",kode_satker, nama_satker]
 
 		# Mengautentikasi dengan kunci API
 		gc = gspread.service_account(filename='service_account.json')

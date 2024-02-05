@@ -45,26 +45,16 @@ with tab1:
 		# Mencatat log pengguna
 		timestamp_now = datetime.now()
 		stringTimestamp = timestamp_now.strftime("%Y-%m-%d %H:%M:%S")
-		setLog = [nama_satker, kode_satker, stringTimestamp]
-
-		# Isi informasi kunci API dan nama spreadsheet
-		api_key = 'AIzaSyDm8O3c-HS8zu7xohBh_p3JKgr6hjdlHDk'
-		spreadsheet_name = 'Log User Perawas RPD'
-
-		# Opsi lain: jika spreadsheet terkunci, gunakan opsi untuk membuka akses
-		# gspread.auth.use_contributed = True
+		setLog = [stringTimestamp, "Revisi KPA",kodeSatker, namaSatker]
 
 		# Mengautentikasi dengan kunci API
-		gc = gspread.auth.APIKeyClient(api_key)
+		gc = gspread.service_account(st.secrets["gs_service_account"])
 
 		# Buka spreadsheet
-		spreadsheet = gc.open(spreadsheet_name)
-
-		# Pilih lembar kerja yang diinginkan
-		worksheet = spreadsheet.Beta  # Ganti dengan nama lembar kerja yang sesuai
+		spreadsheet = gc.open("Log User Perawas RPD").sheet1
 
 		# Menambahkan data ke dalam baris baru
-		worksheet.append_row(setLog)
+		spreadsheet.append_row(setLog)
 
 		# Master Data RPD
 

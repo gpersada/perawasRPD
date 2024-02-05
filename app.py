@@ -38,8 +38,8 @@ with tab1:
 		info = pd.read_excel(uploaded_file2, index_col=None, nrows = 1, dtype=str, engine='openpyxl')
 		info.rename(columns = {'Unnamed: 4':'kdsatker', 'Unnamed: 6':'nmsatker'}, inplace = True)
 		info['kdsatker'] = info['kdsatker'].str[-6:]
-		nama_satker = info['nmsatker'].iloc[0]  +' (' + info['kdsatker'].iloc[0] + ')'
-		kode_satker = info['kdsatker'].iloc[0]
+		namaSatker = info['nmsatker'].iloc[0]  +' (' + info['kdsatker'].iloc[0] + ')'
+		kodeSatker = info['kdsatker'].iloc[0]
 
 		# Mencatat log pengguna
 		timestamp_now = datetime.now()

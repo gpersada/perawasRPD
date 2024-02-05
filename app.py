@@ -47,7 +47,7 @@ with tab1:
 		setLog = [stringTimestamp, "Revisi KPA",kodeSatker, namaSatker]
 
 		# Mengautentikasi dengan kunci API
-		gc = gspread.service_account(st.secrets["gs_service_account"])
+		gc = gspread.service_account(filename='service_account.json')
 
 		# Buka spreadsheet
 		spreadsheet = gc.open("Log User Perawas RPD").sheet1

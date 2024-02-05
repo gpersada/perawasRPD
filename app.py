@@ -11,7 +11,7 @@ import gspread
 import pytz
 
 from pandas.errors import SettingWithCopyWarning
-warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
+warnings.simplefilter("ignore")
 
 # Untuk Download
 buffer = io.BytesIO()
@@ -46,15 +46,8 @@ with tab1:
 		timestamp_now = datetime.now(pytz.timezone('Asia/Jakarta'))
 		stringTimestamp = timestamp_now.strftime("%Y-%m-%d %H:%M:%S")
 		setLog = [stringTimestamp, "Revisi KPA",kode_satker, nama_satker]
-
-		# Mengautentikasi dengan kunci API
-		# gc = gspread.service_account(filename='service_account.json')
 		gc = gspread.service_account_from_dict(st.secrets["gs_service_account"])
-
-		# Buka spreadsheet
 		spreadsheet = gc.open("Log User Perawas RPD").sheet1
-
-		# Menambahkan data ke dalam baris baru
 		spreadsheet.append_row(setLog)
 
 		# Master Data RPD
@@ -1085,6 +1078,14 @@ with tab2:
 		info['kdsatker'] = info['kdsatker'].str[-6:]
 		nama_satker = info['nmsatker'].iloc[0]  +' (' + info['kdsatker'].iloc[0] + ')'
 		kode_satker = info['kdsatker'].iloc[0]	
+
+		# Mencatat log pengguna
+		timestamp_now = datetime.now(pytz.timezone('Asia/Jakarta'))
+		stringTimestamp = timestamp_now.strftime("%Y-%m-%d %H:%M:%S")
+		setLog = [stringTimestamp, "Revisi Hal III DIPA",kode_satker, nama_satker]
+		gc = gspread.service_account_from_dict(st.secrets["gs_service_account"])
+		spreadsheet = gc.open("Log User Perawas RPD").sheet1
+		spreadsheet.append_row(setLog)
 
 		# Master Data RPD
 

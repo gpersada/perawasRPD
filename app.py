@@ -7,6 +7,8 @@ import csv
 import datetime
 from datetime import datetime
 import warnings
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 from pandas.errors import SettingWithCopyWarning
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
@@ -45,10 +47,24 @@ with tab1:
 		stringTimestamp = timestamp_now.strftime("%Y-%m-%d %H:%M:%S")
 		setLog = [nama_satker, kode_satker, stringTimestamp]
 
-		file_path = 'logrpdterakhir.csv'
-		with open(file_path, mode='w', newline='') as file:
-			writer = csv.writer(file)
-			writer.writerows(setLog)	
+		# Isi informasi kunci API dan nama spreadsheet
+		api_key = 'AIzaSyDm8O3c-HS8zu7xohBh_p3JKgr6hjdlHDk'
+		spreadsheet_name = 'Log User Perawas RPD'
+
+		# Opsi lain: jika spreadsheet terkunci, gunakan opsi untuk membuka akses
+		# gspread.auth.use_contributed = True
+
+		# Mengautentikasi dengan kunci API
+		gc = gspread.auth.APIKeyClient(api_key)
+
+		# Buka spreadsheet
+		spreadsheet = gc.open(spreadsheet_name)
+
+		# Pilih lembar kerja yang diinginkan
+		worksheet = spreadsheet.Beta  # Ganti dengan nama lembar kerja yang sesuai
+
+		# Menambahkan data ke dalam baris baru
+		worksheet.append_row(setLog)
 
 		# Master Data RPD
 
